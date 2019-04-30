@@ -6,6 +6,8 @@ exports.up = function(knex, Promise) {
       table.string('name');
       table.string('symbol');
       table.string('founded');
+
+      table.timestamps(true, true);
     }),
 
     knex.schema.createTable('tweets', function(table) {
@@ -17,7 +19,7 @@ exports.up = function(knex, Promise) {
       table.foreign('parties_id')
         .references('parties.id');
 
-      table.timestamp(true, true);
+      table.timestamps(true, true);
     })
 
   ]);
