@@ -19,3 +19,14 @@ app.get('/api/v1/tweets', (req, res) => {
       res.status(500).json({ error });
     });
 });
+
+
+app.get('/api/v1/footnotes', (req, res) => {
+  database('footnotes').select()
+    .then((footnotes) => {
+      res.status(200).json(footnotes);
+    })
+    .catch((error) => {
+      res.status(500).json({ error })
+    })
+});
