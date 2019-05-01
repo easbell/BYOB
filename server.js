@@ -63,3 +63,24 @@ app.get('/api/v1/parties/:id/tweets', (req, res) => {
       res.status(500).json({ error });
     });
 });
+
+// POST add a political party
+app.post('/api/v1/parties', (req, res) => {
+  const party = req.body;
+
+  for (let requiredParameter of ['name', 'symbol', 'founded']) {
+    if (!party[requiredParameter]) {
+      return res
+        .status(422)
+        .send({ error: `Expected format: { name: <String>, symbol: <Symbol>, founded: <String>}. You're missing a ${requiredParameter} property.`});
+    }
+  }
+
+  database('parties').insert(party, 'id')
+    .then(party => {
+      res.status(201).json({ id: party[0] })
+    })
+    .catch(error => {
+      res.status(500).json({ error });
+    });
+})
