@@ -21,10 +21,10 @@ app.get('/api/v1/tweets', (req, res) => {
 });
 
 
-app.get('/api/v1/footnotes', (req, res) => {
-  database('footnotes').select()
-    .then((footnotes) => {
-      res.status(200).json(footnotes);
+app.get('/api/v1/parties', (req, res) => {
+  database('parties').select()
+    .then((parties) => {
+      res.status(200).json(parties);
     })
     .catch((error) => {
       res.status(500).json({ error })
