@@ -19,7 +19,7 @@ const createParty = (knex, party) => {
               parties_id: partyId[0]
             })
           )
-        } 
+        }
       });
 
       return Promise.all(tweetPromises);

@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('tweets', function(table) {
       table.increments('id').primary();
       table.string('username');
-      table.string('content', 1000);
+      table.string('content', 1000); // change to text
       table.string('date_deleted');
       table.integer('parties_id').unsigned();
       table.foreign('parties_id')

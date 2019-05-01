@@ -6,7 +6,6 @@ const database = require('knex')(configuration);
 const app = express();
 const port = 3000;
 app.use(express.json());
-app.get('/', (req, res) => res.send('Hello World'));
 
 app.listen(port, () => console.log(`example app listening on ${port}`))
 
@@ -63,6 +62,23 @@ app.get('/api/v1/parties/:id/tweets', (req, res) => {
       res.status(500).json({ error });
     });
 });
+
+// DELETE tweet
+app.delete('/api/v1/tweets/:id', (req, res) => {
+  database('tweets').where('id', req.params.id).del()
+    .then(tweet => {
+      if (tweet.length) {
+        res.status(200).send('Tweet was deleted.')
+      } else {
+        res.status(404).json({
+          error: `Could not find tweet with id ${req.params.id}`
+        })
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ error })
+    })
+})
 
 // POST to add a political party
 app.post('/api/v1/parties', (req, res) => {
