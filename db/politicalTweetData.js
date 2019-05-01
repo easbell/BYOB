@@ -1,9 +1,9 @@
 const parties = [
   {name: 'Democratic Party',
-  color: 'Blue',
+  symbol: 'Donkey',
   founded: '1828'},
   {name: 'Republican Party',
-  color: 'Red',
+  symbol: 'Elephant',
   founded: '1854'}
 ]
 
@@ -93,3 +93,5 @@ const tweets = [{
   date_deleted: 'Deleted after 1 minute at 1:02 PM on 08 Feb.',
   party: 'Dem'},
 ]
+
+module.exports = parties;

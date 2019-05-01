@@ -1,13 +1,24 @@
+const parties = require('../../politicalTweetData');
 
-exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
-};
+const createTweet = (knex, party) => {
+  return knex('parties').insert({
+    name: party.name,
+    symbol: party.symbol,
+    founded: party.founded
+  }, 'id')
+}
+
+exports.seed = (knex, Promise) => {
+  return knex('tweets').del()
+    .then(() => knex('parties').del())
+    .then(() => {
+      let partyPromises = [];
+
+      parties.forEach(party => {
+        partyPromises.push(createTweet(knex, party));
+      });
+
+      return Promise.all(partyPromises);
+    })
+    .catch(error => console.log(`error seeding data: ${error}`));
+}
