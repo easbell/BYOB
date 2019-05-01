@@ -64,7 +64,7 @@ app.get('/api/v1/parties/:id/tweets', (req, res) => {
     });
 });
 
-// POST add a political party
+// POST to add a political party
 app.post('/api/v1/parties', (req, res) => {
   const party = req.body;
 
@@ -83,4 +83,26 @@ app.post('/api/v1/parties', (req, res) => {
     .catch(error => {
       res.status(500).json({ error });
     });
+})
+
+// POST to add a tweet
+app.post('/api/v1/parties/:id/tweets', (req, res) => {
+  const tweet = req.body;
+  const partyId = req.params.id;
+
+  for (let requiredParameter of ['username', 'content', 'date_deleted']) {
+    if (!tweet[requiredParameter]) {
+      return res
+        .status(422)
+        .send({ error: `Expected format: { username: <String>, content: <Symbol>, date_deleted: <String>}. You're missing a ${requiredParameter} property.`})
+    }
+  }
+
+  database('tweets').insert({...tweet, parties_id: partyId}, 'id')
+    .then(tweet => {
+      res.status(201).json({ tweet })
+    })
+    .catch(error => {
+      res.status(500).json({ error })
+    })
 })
