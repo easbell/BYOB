@@ -20,7 +20,6 @@ app.get('/api/v1/tweets', (req, res) => {
     });
 });
 
-
 app.get('/api/v1/parties', (req, res) => {
   database('parties').select()
     .then((parties) => {
@@ -29,4 +28,38 @@ app.get('/api/v1/parties', (req, res) => {
     .catch((error) => {
       res.status(500).json({ error })
     })
+});
+
+// GET specific party
+app.get('/api/v1/parties/:id', (req, res) => {
+  database('parties').where('id', req.params.id).select()
+    .then(party => {
+      if (party.length) {
+        res.status(200).json(party);
+      } else {
+        res.status(404).json({ 
+          error: `Could not find party with id ${req.params.id}`
+        });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ error });
+    });
+});
+
+// GET tweets for a party
+app.get('/api/v1/parties/:id/tweets', (req, res) => {
+  database('tweets').where('parties_id', req.params.id).select()
+    .then(tweet => {
+      if (tweet.length) {
+        res.status(200).json(tweet);
+      } else {
+        res.status(404).json({ 
+          error: `Could not find tweet with id ${req.params.id}`
+        });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ error });
+    });
 });
