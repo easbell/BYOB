@@ -1,0 +1,27 @@
+{
+  "name": "byob",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.16.5",
+    "nightmare": "^3.0.2",
+    "pg": "^7.10.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easbell/BYOB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/easbell/BYOB/issues"
+  },
+  "homepage": "https://github.com/easbell/BYOB#readme"
+}
