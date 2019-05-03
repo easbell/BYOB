@@ -7,7 +7,7 @@ const app = express();
 app.set('port', process.env.PORT || 3000)
 app.use(express.json());
 
-app.listen(() => console.log(`example app listening on ${port}`))
+app.listen(() => console.log(`example app listening on port.`))
 
 app.get('/api/v1/tweets', (req, res) => {
   database('tweets').select()
