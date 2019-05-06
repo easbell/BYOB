@@ -46,12 +46,12 @@ Response from `https://deleted-tweets.herokuapp.com/api/v1/parties/1` example:
 ```json
 [
   {
-    id: 1,
-    name: "Democratic Party",
-    symbol: "Donkey",
-    founded: "1828",
-    created_at: "2019-05-03T16:02:46.742Z",
-    updated_at: "2019-05-03T16:02:46.742Z"
+    "id": 1,
+    "name": "Democratic Party",
+    "symbol": "Donkey",
+    "founded": "1828",
+    "created_at": "2019-05-03T16:02:46.742Z",
+    "updated_at": "2019-05-03T16:02:46.742Z"
   },
 ]
 ```
