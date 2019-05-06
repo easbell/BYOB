@@ -21,20 +21,20 @@ Response from `https://deleted-tweets.herokuapp.com/api/v1/parties` example:
 ```json
 [
   {
-    id: 1,
-    name: "Democratic Party",
-    symbol: "Donkey",
-    founded: "1828",
-    created_at: "2019-05-03T16:02:46.742Z",
-    updated_at: "2019-05-03T16:02:46.742Z"
+    "id": "1",
+    "name": "Democratic Party",
+    "symbol": "Donkey",
+    "founded": "1828",
+    "created_at": "2019-05-03T16:02:46.742Z",
+    "updated_at": "2019-05-03T16:02:46.742Z"
   },
   {
-    id: 2,
-    name: "Republican Party",
-    symbol: "Elephant",
-    founded: "1854",
-    created_at: "2019-05-03T16:02:46.753Z",
-    updated_at: "2019-05-03T16:02:46.753Z"
+    "id": 2,
+    "name": "Republican Party",
+    "symbol": "Elephant",
+    "founded": "1854",
+    "created_at": "2019-05-03T16:02:46.753Z",
+    "updated_at": "2019-05-03T16:02:46.753Z"
   }
 ]
 ```
@@ -68,9 +68,9 @@ A user can add an additional tweet to the database. Below is the required parame
 POST Party Example:
 ```json
  {
-  name: Independent Party, 
-  symbol: Eagle, 
-  founded: 1967
+  "name": "Independent Party", 
+  "symbol": "Eagle", 
+  "founded": "1967"
  }
 ```
 
@@ -86,11 +86,11 @@ A user can add an additional tweet to the database. Below is the required parame
 POST Tweet Example:
 ```json
  {
-  username: @Hickenlooper,
-  content: "Touring the @UBCJA_Official training center before #workersforum today. To tackle income inequality, we must     
+  "username": "@Hickenlooper",
+  "content": "Touring the @UBCJA_Official training center before #workersforum today. To tackle income inequality, we must     
    partner with labor unions to create the largest expansion of apprenticeships and skills training in our country’s history. 
    #UnionStrong",
-  date_deleted: Deleted after 3 minutes at 6:05 PM on 27 Apr.
+  "date_deleted": "Deleted after 3 minutes at 6:05 PM on 27 Apr."
 }
 ```
 
